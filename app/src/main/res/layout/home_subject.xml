@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#F2C94C"
-    tools:context=".MainActivity">
-    
+    tools:context=".HomeSubject">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -38,7 +37,8 @@
         android:textSize="45px"
         android:textStyle="bold"
         android:textColor="@color/black"
-        tools:text="Bienvenue sur Y-MOVIES"/>
+        tools:text="Films"/>
+
     <TextView
         android:layout_width="290dp"
         android:layout_height="wrap_content"
@@ -48,47 +48,33 @@
         android:textSize="30px"
         android:textStyle="bold"
         android:textColor="@color/black"
-        tools:text="Vous trouverez ici touts les films et series que vous desirez. Des plus anciens au plus recents."/>
+        tools:text="Vous trouverez ici les films qui vous interesse."/>
     />
 
     <LinearLayout
-        android:layout_marginTop="30px"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_marginStart="250px"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            />
-
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:background="@color/black"
-            android:layout_gravity="center_vertical"
-            android:textColor="#F2C94C"
-            tools:text="Films"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_marginStart="250px"
-            android:layout_width="120dp"
-            android:layout_height="120dp"/>
+        android:gravity="center_horizontal"
+        >
+    <EditText
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:background="@color/black"
+        android:hint="Choisissez un film"
+        android:padding="15px"
+        android:textSize="12dp"
+        android:textColorHint="#F2C94C"
+        />
 
         <Button
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
             android:background="@color/black"
-            android:layout_gravity="center_vertical"
             android:textColor="#F2C94C"
-            tools:text="Series"/>
+            android:textSize="8sp"
+            tools:text="Entrez" />
+
     </LinearLayout>
-
-
 </LinearLayout>
