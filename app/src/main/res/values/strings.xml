@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Y-Movies</string>
+    <string name="app_name">Y-MOVIES</string>
+    <string name="welcome">Welcome To</string>
+    <string name="search">What are you looking for ?</string>
+    <string name="genre">What genres do you like ?</string>
+    <string name="genre_movie">Movies Genres</string>
+    <string name="genre_serie">Series Genres</string>
 </resources>
