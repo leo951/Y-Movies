@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.y_movies.AppActivity;
 import com.example.y_movies.R;
-import com.example.y_movies.ui.introduction.MovieOrSerie;
+import com.example.y_movies.ui.intro.MovieOrSerie;
 
 import java.util.Timer;
 import java.util.TimerTask;

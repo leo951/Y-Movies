@@ -1,4 +1,4 @@
-package com.example.y_movies.ui.introduction;
+package com.example.y_movies.ui.intro;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,8 @@ import android.view.View;
 
 import com.example.y_movies.AppActivity;
 import com.example.y_movies.R;
-import com.example.y_movies.ui.listing.ListingGenre;
+import com.example.y_movies.ui.listing.ListingGenreActivity;
+import com.example.y_movies.ui.search.SearchMovieActivity;
 
 public class MovieOrSerie extends AppActivity {
     @Override
@@ -16,7 +17,7 @@ public class MovieOrSerie extends AppActivity {
     }
 
     public void showMovie(View view) {
-        Intent intentMovie = new Intent(MovieOrSerie.this, ListingGenre.class);
+        Intent intentMovie = new Intent(MovieOrSerie.this, ListingGenreActivity.class);
 
         intentMovie.putExtra("isMovie", true);
 
@@ -24,11 +25,16 @@ public class MovieOrSerie extends AppActivity {
     }
 
     public void showSerie(View view) {
-        Intent intentSerie = new Intent(MovieOrSerie.this, ListingGenre.class);
+        Intent intentSerie = new Intent(MovieOrSerie.this, ListingGenreActivity.class);
 
-        // passage d'un paramètre
         intentSerie.putExtra("isMovie", false);
 
         startActivity(intentSerie);
+    }
+
+    public void search(View view) {
+        Intent intentSearch = new Intent(MovieOrSerie.this, SearchMovieActivity.class);
+
+        startActivity(intentSearch);
     }
 }

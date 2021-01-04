@@ -30,7 +30,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-public class PosterSerie extends AppActivity {
+public class PosterSerieActivity extends AppActivity {
 
     private ImageView imageSerie;
     private TextView noteSerie;
@@ -144,7 +144,7 @@ public class PosterSerie extends AppActivity {
 
         similarList.setAdapter(
                 new AdapterSerie(
-                        PosterSerie.this,
+                        PosterSerieActivity.this,
                         R.layout.item_movie_serie,
                         resultsList
                 )
@@ -153,7 +153,7 @@ public class PosterSerie extends AppActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intentSerie = new Intent(PosterSerie.this, PosterSerie.class);
+                Intent intentSerie = new Intent(PosterSerieActivity.this, PosterSerieActivity.class);
 
                 int serieId = resultsList.get(position).getId();
                 intentSerie.putExtra("serie_id", serieId);

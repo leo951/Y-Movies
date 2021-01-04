@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.poster.PosterMovie">
+        tools:context=".ui.poster.PosterMovieActivity">
 
         <ImageView
             android:id="@+id/imageMovie"
@@ -69,6 +69,18 @@
                 android:textSize="13dp"
                 tools:text="France" />
         </LinearLayout>
+        <TextView
+            android:onClick="addPreference"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="like"
+            android:textSize="20dp"
+            android:background="@color/purple_500"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
         <TextView
             android:id="@+id/nameMovie"
             android:layout_width="wrap_content"

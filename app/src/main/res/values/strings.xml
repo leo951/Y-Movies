@@ -5,4 +5,6 @@
     <string name="genre">What genres do you like ?</string>
     <string name="genre_movie">Movies Genres</string>
     <string name="genre_serie">Series Genres</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

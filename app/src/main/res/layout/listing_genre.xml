@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/purple_100"
-    tools:context=".ui.listing.ListingGenre">
+    tools:context=".ui.listing.ListingGenreActivity">
 
 
     <LinearLayout

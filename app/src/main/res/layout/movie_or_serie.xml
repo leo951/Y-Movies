@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/purple_100"
-    tools:context=".ui.introduction.MovieOrSerie">
+    tools:context=".ui.intro.MovieOrSerie">
 
 
     <LinearLayout
@@ -85,6 +85,7 @@
         android:textSize="15dp" />
 
     <TextView
+        android:onClick="search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -12,4 +12,9 @@
     <color name="black">#FF000000</color>
     <color name="dark">#707070</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="a.a">#E91E63</color>
+    <color name="a.b">#85183D</color>
+    <color name="b.a">#009688</color>
+    <color name="b.b">#00534B</color>
+
 </resources>

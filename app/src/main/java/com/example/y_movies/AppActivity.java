@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.y_movies.ui.introduction.MovieOrSerie;
+import com.example.y_movies.ui.intro.MovieOrSerie;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

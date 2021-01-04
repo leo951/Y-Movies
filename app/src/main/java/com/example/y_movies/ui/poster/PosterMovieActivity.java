@@ -21,7 +21,6 @@ import com.example.y_movies.models.movie.ApiMovies;
 import com.example.y_movies.models.movie.ApiPosterMovie;
 import com.example.y_movies.models.movie.Results;
 import com.example.y_movies.ui.adapter.AdapterMovie;
-import com.example.y_movies.ui.listing.ListingMovie;
 import com.example.y_movies.utils.Constant;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -31,7 +30,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-public class PosterMovie extends AppActivity {
+public class PosterMovieActivity extends AppActivity {
 
     private ImageView imageMovie;
     private TextView nameMovie;
@@ -122,9 +121,12 @@ public class PosterMovie extends AppActivity {
                     .into(imageMovie);
         }
 
-    private void parseJsonSimilary(String json) {
+    public void parseJsonSimilary(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiMovies api = new Gson().fromJson(json, ApiMovies.class);
+        if (api.getResults().isEmpty()){
+
+        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getTitle(),
@@ -135,7 +137,7 @@ public class PosterMovie extends AppActivity {
 
         similarList.setAdapter(
                 new AdapterMovie(
-                        PosterMovie.this,
+                        PosterMovieActivity.this,
                         R.layout.item_movie_serie,
                         resultsList
                 )
@@ -144,7 +146,7 @@ public class PosterMovie extends AppActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intentMovie = new Intent(PosterMovie.this, PosterMovie.class);
+                Intent intentMovie = new Intent(PosterMovieActivity.this, PosterMovieActivity.class);
 
                 int movieId = resultsList.get(position).getId();
                 intentMovie.putExtra("movie_id", movieId);

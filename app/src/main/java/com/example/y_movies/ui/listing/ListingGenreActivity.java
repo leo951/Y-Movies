@@ -28,7 +28,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-public class ListingGenre extends AppActivity {
+public class ListingGenreActivity extends AppActivity {
 
     private TextView movieOrSerie;
     private ListView listGenre;
@@ -42,7 +42,13 @@ public class ListingGenre extends AppActivity {
         movieOrSerie = findViewById(R.id.movieOrSerie);
         listGenre = findViewById(R.id.listGenre);
 
-        movieOrSerie.setText(R.string.genre_movie);
+        boolean isMovie = getIntent().getExtras().getBoolean("isMovie");
+        if(isMovie){
+            movieOrSerie.setText(R.string.genre_movie);
+        }else{
+            movieOrSerie.setText(R.string.genre_serie);
+        }
+
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = String.format(Constant.URL_GENRE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -76,7 +82,7 @@ public class ListingGenre extends AppActivity {
         }
         listGenre.setAdapter(
                 new AdapterGenre(
-                        ListingGenre.this,
+                        ListingGenreActivity.this,
                         R.layout.item_genre,
                         genreList
                 )
@@ -91,12 +97,12 @@ public class ListingGenre extends AppActivity {
                     boolean isMovie = getIntent().getExtras().getBoolean("isMovie");
 
                     if (isMovie) {
-                        Intent intentGenres = new Intent(ListingGenre.this, ListingMovie.class);
+                        Intent intentGenres = new Intent(ListingGenreActivity.this, ListingMovieActivity.class);
                         intentGenres.putExtra("genre_id", item);
                         intentGenres.putExtra("genre_name", name);
                         startActivity(intentGenres);
                     } else {
-                        Intent intentGenres = new Intent(ListingGenre.this, ListingSerie.class);
+                        Intent intentGenres = new Intent(ListingGenreActivity.this, ListingSerieActivity.class);
                         intentGenres.putExtra("genre_id", item);
                         intentGenres.putExtra("genre_name", name);
                         startActivity(intentGenres);

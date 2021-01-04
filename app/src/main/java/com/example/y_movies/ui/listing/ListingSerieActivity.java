@@ -2,7 +2,6 @@ package com.example.y_movies.ui.listing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,11 +15,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.y_movies.AppActivity;
 import com.example.y_movies.R;
-import com.example.y_movies.models.movie.ApiMovies;
-import com.example.y_movies.models.movie.Results;
-import com.example.y_movies.ui.adapter.AdapterMovie;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.y_movies.ui.poster.PosterMovie;
+import com.example.y_movies.models.serie.ApiSeries;
+import com.example.y_movies.models.serie.Results;
+import com.example.y_movies.ui.adapter.AdapterSerie;
+import com.example.y_movies.ui.poster.PosterSerieActivity;
 import com.example.y_movies.utils.Constant;
 import com.google.gson.Gson;
 
@@ -29,67 +27,64 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-public class ListingMovie extends AppActivity {
+public class ListingSerieActivity extends AppActivity {
     private TextView whatGenre;
-    private ListView listViewDataMovie;
+    private ListView listViewData;
     private TextView numberResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listing_movie);
+        setContentView(R.layout.listing_serie);
 
 
         whatGenre = findViewById(R.id.whatGenre);
-        listViewDataMovie = findViewById(R.id.listViewDataMovie);
+        listViewData = findViewById(R.id.listViewData);
         numberResult = findViewById(R.id.numberResult);
 
         String GenreName = getIntent().getExtras().getString("genre_name");
         int Genre_id = getIntent().getExtras().getInt("genre_id");
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         whatGenre.setText(GenreName);
-        RequestQueue queue = Volley.newRequestQueue(this);
-        List<Results> resultsList = new ArrayList<>();
+            RequestQueue queue = Volley.newRequestQueue(this);
+            List<Results> resultsList = new ArrayList<>();
+            for (int page = 1; page < 200; page++) {
+                String url = String.format(Constant.URL_SERIE_TOP_RATED, page);
 
-        for (int page = 1; page < 200; page++) {
-
-            String url = String.format(Constant.URL_MOVIE_TOP_RATED, page);
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                    new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                ApiMovies api = new Gson().fromJson(response, ApiMovies.class);
+
+                                ApiSeries api = new Gson().fromJson(response, ApiSeries.class);
                                 for (int i = 0; i < api.getResults().size(); i++){
                                     for (int j = 0; j < api.getResults().get(i).getGenre_ids().length; j++){
                                         if (api.getResults().get(i).getGenre_ids()[j] == Genre_id){
                                             resultsList.add(new Results(
-                                                    api.getResults().get(i).getTitle(),
+                                                    api.getResults().get(i).getOriginal_name(),
                                                     api.getResults().get(i).getPoster_path(),
                                                     api.getResults().get(i).getId()
                                             ));
                                         }
                                     }
                                 }
-                                String ShowNbResult = resultsList.size() + " Resultats";
-                                numberResult.setText(ShowNbResult);
-                                listViewDataMovie.setAdapter(
-                                        new AdapterMovie(
-                                                ListingMovie.this,
+                                listViewData.setAdapter(
+                                        new AdapterSerie(
+                                                ListingSerieActivity.this,
                                                 R.layout.item_movie_serie,
                                                 resultsList
                                         )
                                 );
-                                listViewDataMovie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                String ShowNbResult = resultsList.size() + " Resultats";
+                                numberResult.setText(ShowNbResult);
+                                listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                        Intent intentMovie = new Intent(ListingMovie.this, PosterMovie.class);
-
-                                        int movieId = resultsList.get(position).getId();
-                                        intentMovie.putExtra("movie_id", movieId);
-                                        startActivity(intentMovie);
+                                        Intent intentSerie = new Intent(ListingSerieActivity.this, PosterSerieActivity.class);
+                                        int serieId = resultsList.get(position).getId();
+                                        intentSerie.putExtra("serie_id", serieId);
+                                        startActivity(intentSerie);
                                     }
                                 });
                             }
@@ -101,6 +96,6 @@ public class ListingMovie extends AppActivity {
                 });
                 queue.add(stringRequest);
             }
-
         }
     }
+

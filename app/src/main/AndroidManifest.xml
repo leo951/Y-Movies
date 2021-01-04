@@ -22,12 +22,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.introduction.MovieOrSerie" />
-        <activity android:name=".ui.listing.ListingGenre"/>
-        <activity android:name=".ui.listing.ListingSerie"/>
-        <activity android:name=".ui.listing.ListingMovie"/>
-        <activity android:name=".ui.poster.PosterMovie"/>
-        <activity android:name=".ui.poster.PosterSerie"/>
+        <activity android:name=".ui.intro.MovieOrSerie" />
+        <activity android:name=".ui.listing.ListingGenreActivity"/>
+        <activity android:name=".ui.listing.ListingSerieActivity"/>
+        <activity android:name=".ui.listing.ListingMovieActivity"/>
+        <activity android:name=".ui.poster.PosterMovieActivity"/>
+        <activity android:name=".ui.poster.PosterSerieActivity"/>
+        <activity android:name=".ui.search.SearchMovieActivity"/>
+        <activity android:name=".ui.search.SearchSerieActivity"/>
+
+
 
     </application>
 
