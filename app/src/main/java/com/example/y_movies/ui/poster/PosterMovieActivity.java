@@ -1,6 +1,7 @@
 package com.example.y_movies.ui.poster;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -171,4 +172,7 @@ public class PosterMovieActivity extends AppActivity {
         }
     }
 
+    public void addPreference(View view) {
+
+    }
 }
