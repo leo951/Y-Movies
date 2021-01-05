@@ -22,6 +22,7 @@ import com.example.y_movies.models.serie.ApiPosterSerie;
 import com.example.y_movies.models.serie.ApiSeries;
 import com.example.y_movies.ui.adapter.AdapterSerie;
 import com.example.y_movies.utils.Constant;
+import com.example.y_movies.utils.Preference;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -42,6 +43,7 @@ public class PosterSerieActivity extends AppActivity {
     private TextView descSerie;
     private ListView similarList;
     private RequestQueue queue;
+    private ApiPosterSerie api;
     private int serieId;
 
 
@@ -96,14 +98,12 @@ public class PosterSerieActivity extends AppActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("volley", "onErrorResponse:" + response);
 
                         parseJsonSimilary(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "onErrorResponse:" + error);
                 parseJson(new String(error.networkResponse.data));
 
             }
@@ -113,7 +113,7 @@ public class PosterSerieActivity extends AppActivity {
     }
 
     private void parseJson(String json) {
-        ApiPosterSerie api = new Gson().fromJson(json, ApiPosterSerie.class);
+        api = new Gson().fromJson(json, ApiPosterSerie.class);
         nameSerie.setText(api.getName());
         descSerie.setText(api.getOverview());
         dateSerie.setText(api.getFirst_air_date().substring(0, 4) + "-" + api.getLast_air_date().substring(0, 4));
@@ -162,21 +162,18 @@ public class PosterSerieActivity extends AppActivity {
         });
     }
 
-
-
-        private String minuteByHour(int min){
-        if (min >= 60){
-            int reste = min % 60;
-            int countHour = (min - reste) / 60;
-            if (reste == 0){
-                return String.format("%dh", countHour);
-            }
-            else {
-                return String.format("%dh%d", countHour, reste);
-            }
-
-        }else {
-            return String.format("%dmin", min);
+    public void addFavoriSerie(View view) {
+        String serieId = Preference.getSerie(PosterSerieActivity.this);
+        String newFavoriSerie;
+        if(!serieId.isEmpty()){
+            newFavoriSerie = api.getId() + "," + serieId;
+        }else{
+            newFavoriSerie = Integer.toString(api.getId());
         }
+        Preference.setSerie(PosterSerieActivity.this, newFavoriSerie);
+    }
+
+    public void listSerie(View view) {
+        super.onBackPressed();
     }
 }

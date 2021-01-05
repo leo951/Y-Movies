@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.y_movies.AppActivity;
 import com.example.y_movies.R;
-import com.example.y_movies.ui.intro.MovieOrSerie;
+import com.example.y_movies.ui.home.HomeActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,7 +26,7 @@ public class MainActivity extends AppActivity {
             @Override
             public void run() {
                 // TODO : lancement de HomeActivity
-                Intent myIntent = new Intent(MainActivity.this, MovieOrSerie.class);
+                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 finish();
             }

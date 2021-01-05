@@ -18,6 +18,8 @@ import com.example.y_movies.R;
 import com.example.y_movies.models.movie.ApiMovies;
 import com.example.y_movies.models.movie.Results;
 import com.example.y_movies.ui.adapter.AdapterMovie;
+import com.example.y_movies.ui.home.HomeActivity;
+import com.example.y_movies.ui.listing.ListingFavoriteMovie;
 import com.example.y_movies.ui.poster.PosterMovieActivity;
 import com.example.y_movies.utils.Constant;
 import com.example.y_movies.utils.FastDialog;
@@ -84,6 +86,14 @@ public class SearchMovieActivity extends AppActivity {
     private void parseJson(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiMovies api = new Gson().fromJson(json, ApiMovies.class);
+        if(api.getResults().isEmpty()){
+            FastDialog.showDialog(
+                    SearchMovieActivity.this,
+                    FastDialog.SIMPLE_DIALOG,
+                    "Sorry no result."
+            );
+            return;
+        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getTitle(),
@@ -114,5 +124,17 @@ public class SearchMovieActivity extends AppActivity {
         Intent intentMovie = new Intent(SearchMovieActivity.this, SearchSerieActivity.class);
 
         startActivity(intentMovie);
+    }
+    public void goFavori(View view) {
+        Intent intentFavori = new Intent(SearchMovieActivity.this, ListingFavoriteMovie.class);
+        startActivity(intentFavori);
+    }
+    public void goSearch(View view) {
+        Intent intentFavori = new Intent(SearchMovieActivity.this, SearchMovieActivity.class);
+        startActivity(intentFavori);
+    }
+    public void goHome(View view) {
+        Intent intentFavori = new Intent(SearchMovieActivity.this, HomeActivity.class);
+        startActivity(intentFavori);
     }
 }

@@ -18,7 +18,9 @@ import com.example.y_movies.R;
 import com.example.y_movies.models.serie.ApiSeries;
 import com.example.y_movies.models.serie.Results;
 import com.example.y_movies.ui.adapter.AdapterSerie;
+import com.example.y_movies.ui.home.HomeActivity;
 import com.example.y_movies.ui.poster.PosterSerieActivity;
+import com.example.y_movies.ui.search.SearchMovieActivity;
 import com.example.y_movies.utils.Constant;
 import com.google.gson.Gson;
 
@@ -97,5 +99,18 @@ public class ListingSerieActivity extends AppActivity {
                 queue.add(stringRequest);
             }
         }
+    public void goFavori(View view) {
+        Intent intent = new Intent(ListingSerieActivity.this, ListingFavoriteMovie.class);
+        startActivity(intent);
+    }
+    public void goSearch(View view) {
+        Intent intent = new Intent(ListingSerieActivity.this, SearchMovieActivity.class);
+        startActivity(intent);
+    }
+    public void goGenre(View view) {
+        Intent intent = new Intent(ListingSerieActivity.this, ListingGenreActivity.class);
+        intent.putExtra("isMovie", false);
+        startActivity(intent);
+    }
     }
 

@@ -18,6 +18,8 @@ import com.example.y_movies.R;
 import com.example.y_movies.models.serie.Results;
 import com.example.y_movies.models.serie.ApiSeries;
 import com.example.y_movies.ui.adapter.AdapterSerie;
+import com.example.y_movies.ui.home.HomeActivity;
+import com.example.y_movies.ui.listing.ListingFavoriteMovie;
 import com.example.y_movies.ui.poster.PosterSerieActivity;
 import com.example.y_movies.utils.Constant;
 import com.example.y_movies.utils.FastDialog;
@@ -32,7 +34,7 @@ import androidx.annotation.Nullable;
 public class SearchSerieActivity extends AppActivity {
 
     private EditText editText;
-    private ListView listViewDataMovie;
+    private ListView listViewDataSerie;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class SearchSerieActivity extends AppActivity {
         setContentView(R.layout.search_serie);
 
         editText = findViewById(R.id.editText);
-        listViewDataMovie = findViewById(R.id.listViewDataMovie);
+        listViewDataSerie = findViewById(R.id.listViewDataSerie);
     }
 
     public void submit(View view) {
@@ -88,6 +90,14 @@ public class SearchSerieActivity extends AppActivity {
     private void parseJson(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiSeries api = new Gson().fromJson(json, ApiSeries.class);
+        if(api.getResults().isEmpty()){
+            FastDialog.showDialog(
+                    SearchSerieActivity.this,
+                    FastDialog.SIMPLE_DIALOG,
+                    "Sorry no result."
+            );
+            return;
+        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getOriginal_name(),
@@ -96,14 +106,14 @@ public class SearchSerieActivity extends AppActivity {
             ));
         }
 
-        listViewDataMovie.setAdapter(
+        listViewDataSerie.setAdapter(
                 new AdapterSerie(
                         SearchSerieActivity.this,
                         R.layout.item_movie_serie,
                         resultsList
                 )
         );
-        listViewDataMovie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewDataSerie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentMovie = new Intent(SearchSerieActivity.this, PosterSerieActivity.class);
@@ -118,5 +128,17 @@ public class SearchSerieActivity extends AppActivity {
         Intent intentSerie = new Intent(SearchSerieActivity.this, SearchMovieActivity.class);
 
         startActivity(intentSerie);
+    }
+    public void goFavori(View view) {
+        Intent intentFavori = new Intent(SearchSerieActivity.this, ListingFavoriteMovie.class);
+        startActivity(intentFavori);
+    }
+    public void goSearch(View view) {
+        Intent intentFavori = new Intent(SearchSerieActivity.this, SearchMovieActivity.class);
+        startActivity(intentFavori);
+    }
+    public void goHome(View view) {
+        Intent intentFavori = new Intent(SearchSerieActivity.this, HomeActivity.class);
+        startActivity(intentFavori);
     }
 }

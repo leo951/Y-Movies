@@ -20,6 +20,8 @@ import com.example.y_movies.R;
 import com.example.y_movies.models.genre.ApiGenres;
 import com.example.y_movies.models.genre.Genres;
 import com.example.y_movies.ui.adapter.AdapterGenre;
+import com.example.y_movies.ui.home.HomeActivity;
+import com.example.y_movies.ui.search.SearchMovieActivity;
 import com.example.y_movies.utils.Constant;
 import com.google.gson.Gson;
 
@@ -112,5 +114,17 @@ public class ListingGenreActivity extends AppActivity {
             }
         });
 
+    }
+    public void goFavori(View view) {
+        Intent intent = new Intent(ListingGenreActivity.this, ListingFavoriteMovie.class);
+        startActivity(intent);
+    }
+    public void goSearch(View view) {
+        Intent intent = new Intent(ListingGenreActivity.this, SearchMovieActivity.class);
+        startActivity(intent);
+    }
+    public void goHome(View view) {
+        Intent intent = new Intent(ListingGenreActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

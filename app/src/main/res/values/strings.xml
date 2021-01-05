@@ -7,4 +7,7 @@
     <string name="genre_serie">Series Genres</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="remove"><u>Remove</u></string>
+    <string name="FavoriteSerie"><u>Favorite serie</u></string>
+    <string name="FavoriteMovie"><u>Favorite movie</u></string>
 </resources>

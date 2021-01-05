@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.y_movies.ui.intro.MovieOrSerie;
+import com.example.y_movies.ui.home.HomeActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +32,7 @@ public class AppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(getSupportActionBar() != null) {
-            if(!(this instanceof MovieOrSerie)) {
+            if(!(this instanceof HomeActivity)) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }

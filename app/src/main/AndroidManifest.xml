@@ -7,14 +7,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/y_movie"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/y_movie"
         android:supportsRtl="true"
-        android:theme="@style/Theme.YMovies">
+        android:theme="@style/Theme.SplashTheme">
         <activity
-            android:name=".ui.main.MainActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,16 +21,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.intro.MovieOrSerie" />
+        <activity android:name=".ui.home.HomeActivity"/>
+
         <activity android:name=".ui.listing.ListingGenreActivity"/>
+
         <activity android:name=".ui.listing.ListingSerieActivity"/>
         <activity android:name=".ui.listing.ListingMovieActivity"/>
+
+        <activity android:name=".ui.listing.ListingFavoriteMovie"/>
+        <activity android:name=".ui.listing.ListingFavoriteSerie"/>
+
         <activity android:name=".ui.poster.PosterMovieActivity"/>
         <activity android:name=".ui.poster.PosterSerieActivity"/>
+
         <activity android:name=".ui.search.SearchMovieActivity"/>
         <activity android:name=".ui.search.SearchSerieActivity"/>
-
-
 
     </application>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.listing.ListingSerieActivity">
+    tools:context=".ui.listing.ListingFavoriteMovie">
 
 
     <LinearLayout
@@ -15,32 +15,55 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/whatGenre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
-            tools:text="@string/app_name"
-            android:textStyle="bold"
-            android:textColor="@color/white"
+            android:text="Favorite movie"
+            android:textColor="@color/purple_500"
             android:textSize="120px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            android:gravity="right">
+            <TextView
+                android:onClick="removeFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="right"
+                android:textColor="@color/white"
+                android:text="@string/remove"
+                android:textSize="15dp" />
+            <TextView
+                android:onClick="favoriSerie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="right"
+                android:textColor="@color/white"
+                android:text="@string/FavoriteSerie"
+                android:textSize="15dp" />
+        </LinearLayout>
         <TextView
-            android:id="@+id/numberResult"
+            android:id="@+id/status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             tools:text="@string/app_name"
-            android:textColor="@color/purple_200" />
-
+            android:textColor="@color/purple_100" />
         <ListView
             android:id="@+id/listViewData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -49,14 +72,14 @@
         android:layout_alignParentBottom="true">
 
         <ImageView
-            android:onClick="goGenre"
+            android:onClick="goHome"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="36dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="50"
             android:textStyle="bold"
             android:background="@color/transparent"
-            android:src="@drawable/genre"
+            android:src="@drawable/home"
             android:textSize="20dp"/>
 
 
@@ -82,4 +105,5 @@
             android:src="@drawable/favorite"
             android:textSize="20dp"/>
     </LinearLayout>
+
 </RelativeLayout>

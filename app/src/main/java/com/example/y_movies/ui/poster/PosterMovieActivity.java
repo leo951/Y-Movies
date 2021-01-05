@@ -1,7 +1,6 @@
 package com.example.y_movies.ui.poster;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +22,7 @@ import com.example.y_movies.models.movie.ApiPosterMovie;
 import com.example.y_movies.models.movie.Results;
 import com.example.y_movies.ui.adapter.AdapterMovie;
 import com.example.y_movies.utils.Constant;
+import com.example.y_movies.utils.Preference;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -43,6 +43,7 @@ public class PosterMovieActivity extends AppActivity {
     private ListView similarList;
     private RequestQueue queue;
     private int movieId;
+    private ApiPosterMovie api;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,14 +93,12 @@ public class PosterMovieActivity extends AppActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("volley", "onErrorResponse:" + response);
 
                         parseJsonSimilary(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "onErrorResponse:" + error);
                 parseJson(new String(error.networkResponse.data));
 
             }
@@ -109,7 +108,7 @@ public class PosterMovieActivity extends AppActivity {
     }
 
     private void parseJson(String json) {
-        ApiPosterMovie api = new Gson().fromJson(json, ApiPosterMovie.class);
+        api = new Gson().fromJson(json, ApiPosterMovie.class);
         nameMovie.setText(api.getTitle());
         descMovie.setText(api.getOverview());
         dateMovie.setText(api.getRelease_date().substring(0, 4));
@@ -125,9 +124,6 @@ public class PosterMovieActivity extends AppActivity {
     public void parseJsonSimilary(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiMovies api = new Gson().fromJson(json, ApiMovies.class);
-        if (api.getResults().isEmpty()){
-
-        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getTitle(),
@@ -172,7 +168,19 @@ public class PosterMovieActivity extends AppActivity {
         }
     }
 
-    public void addPreference(View view) {
+    public void addFavoriMovie(View view) {
+        String movieId = Preference.getMovie(PosterMovieActivity.this);
+        String newFavoriMovie;
+        if(!movieId.isEmpty()){
+            newFavoriMovie = api.getId() + "," + movieId;
+        }else{
+            newFavoriMovie = Integer.toString(api.getId());
+        }
+        Preference.setMovie(PosterMovieActivity.this, newFavoriMovie);
 
+    }
+
+    public void listMovie(View view) {
+        super.onBackPressed();
     }
 }

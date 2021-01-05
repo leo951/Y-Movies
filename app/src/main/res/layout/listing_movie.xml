@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/purple_100"
     tools:context=".ui.listing.ListingMovieActivity">
 
 
@@ -20,10 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             tools:text="@string/app_name"
-            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="120px" />
         <TextView
             android:id="@+id/numberResult"
@@ -32,7 +32,7 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             tools:text="@string/app_name"
-            android:textColor="@color/black" />
+            android:textColor="@color/purple_200" />
 
         <ListView
             android:id="@+id/listViewDataMovie"
@@ -41,5 +41,46 @@
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/light"
+        android:layout_alignParentBottom="true">
 
-</LinearLayout>
+        <ImageView
+            android:onClick="goGenre"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:src="@drawable/genre"
+            android:textSize="20dp"/>
+
+
+        <ImageView
+            android:onClick="goSearch"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:src="@drawable/search"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:onClick="goFavori"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:src="@drawable/favorite"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
