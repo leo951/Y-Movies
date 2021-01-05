@@ -102,11 +102,6 @@ public class ListingFavoriteMovie extends AppActivity {
         });
     }
 
-    public void favoriSerie(View view) {
-        Intent intent = new Intent(ListingFavoriteMovie.this, ListingFavoriteSerie.class);
-        startActivity(intent);
-    }
-
     public void removeFavorite(View view) {
         Preference.setMovie(ListingFavoriteMovie.this, "");
         Intent intentMovie = new Intent(ListingFavoriteMovie.this, HomeActivity.class);

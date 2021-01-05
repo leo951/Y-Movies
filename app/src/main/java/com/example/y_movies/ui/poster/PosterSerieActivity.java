@@ -162,17 +162,6 @@ public class PosterSerieActivity extends AppActivity {
         });
     }
 
-    public void addFavoriSerie(View view) {
-        String serieId = Preference.getSerie(PosterSerieActivity.this);
-        String newFavoriSerie;
-        if(!serieId.isEmpty()){
-            newFavoriSerie = api.getId() + "," + serieId;
-        }else{
-            newFavoriSerie = Integer.toString(api.getId());
-        }
-        Preference.setSerie(PosterSerieActivity.this, newFavoriSerie);
-    }
-
     public void listSerie(View view) {
         super.onBackPressed();
     }

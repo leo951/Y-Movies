@@ -29,7 +29,6 @@
         <activity android:name=".ui.listing.ListingMovieActivity"/>
 
         <activity android:name=".ui.listing.ListingFavoriteMovie"/>
-        <activity android:name=".ui.listing.ListingFavoriteSerie"/>
 
         <activity android:name=".ui.poster.PosterMovieActivity"/>
         <activity android:name=".ui.poster.PosterSerieActivity"/>

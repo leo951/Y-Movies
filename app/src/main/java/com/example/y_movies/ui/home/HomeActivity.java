@@ -7,7 +7,6 @@ import android.view.View;
 import com.example.y_movies.AppActivity;
 import com.example.y_movies.R;
 import com.example.y_movies.ui.listing.ListingFavoriteMovie;
-import com.example.y_movies.ui.listing.ListingFavoriteSerie;
 import com.example.y_movies.ui.listing.ListingGenreActivity;
 import com.example.y_movies.ui.search.SearchMovieActivity;
 

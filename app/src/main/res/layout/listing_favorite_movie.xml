@@ -21,7 +21,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
             android:text="Favorite movie"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/purple_200"
             android:textSize="120px" />
 
         <LinearLayout
@@ -39,15 +39,6 @@
                 android:textColor="@color/white"
                 android:text="@string/remove"
                 android:textSize="15dp" />
-            <TextView
-                android:onClick="favoriSerie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="right"
-                android:textColor="@color/white"
-                android:text="@string/FavoriteSerie"
-                android:textSize="15dp" />
         </LinearLayout>
         <TextView
             android:id="@+id/status"
@@ -57,7 +48,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             tools:text="@string/app_name"
-            android:textColor="@color/purple_100" />
+            android:textColor="@color/teal_200" />
         <ListView
             android:id="@+id/listViewData"
             android:layout_width="match_parent"
