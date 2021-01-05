@@ -41,6 +41,7 @@ public class PosterSerieActivity extends AppActivity {
     private TextView nbEpisode;
     private TextView nameSerie;
     private TextView descSerie;
+    private TextView statusSimilar;
     private ListView similarList;
     private RequestQueue queue;
     private ApiPosterSerie api;
@@ -60,6 +61,7 @@ public class PosterSerieActivity extends AppActivity {
         nbEpisode = findViewById(R.id.nbEpisode);
         nameSerie = findViewById(R.id.nameSerie);
         descSerie = findViewById(R.id.descSerie);
+        statusSimilar = findViewById(R.id.statusSimilar);
         similarList = findViewById(R.id.similarList);
         serieId = getIntent().getExtras().getInt("serie_id");
         queue = Volley.newRequestQueue(this);
@@ -134,6 +136,12 @@ public class PosterSerieActivity extends AppActivity {
     private void parseJsonSimilary(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiSeries api = new Gson().fromJson(json, ApiSeries.class);
+        if (api.getResults().isEmpty()){
+            statusSimilar.setText("No Similar movie.");
+        }
+        else {
+            statusSimilar.setText("Similar movie:");
+        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getOriginal_name(),

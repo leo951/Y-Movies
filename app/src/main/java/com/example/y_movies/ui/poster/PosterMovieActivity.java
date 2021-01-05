@@ -21,7 +21,9 @@ import com.example.y_movies.models.movie.ApiMovies;
 import com.example.y_movies.models.movie.ApiPosterMovie;
 import com.example.y_movies.models.movie.Results;
 import com.example.y_movies.ui.adapter.AdapterMovie;
+import com.example.y_movies.ui.search.SearchMovieActivity;
 import com.example.y_movies.utils.Constant;
+import com.example.y_movies.utils.FastDialog;
 import com.example.y_movies.utils.Preference;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -40,6 +42,7 @@ public class PosterMovieActivity extends AppActivity {
     private TextView timeMovie;
     private TextView countryMovie;
     private TextView descMovie;
+    private TextView statusSimilar;
     private ListView similarList;
     private RequestQueue queue;
     private int movieId;
@@ -57,6 +60,7 @@ public class PosterMovieActivity extends AppActivity {
         timeMovie = findViewById(R.id.timeMovie);
         countryMovie = findViewById(R.id.countryMovie);
         descMovie = findViewById(R.id.descMovie);
+        statusSimilar = findViewById(R.id.statusSimilar);
         similarList = findViewById(R.id.similarList);
         movieId = getIntent().getExtras().getInt("movie_id");
         queue = Volley.newRequestQueue(this);
@@ -124,6 +128,12 @@ public class PosterMovieActivity extends AppActivity {
     public void parseJsonSimilary(String json) {
         List<Results> resultsList = new ArrayList<>();
         ApiMovies api = new Gson().fromJson(json, ApiMovies.class);
+        if (api.getResults().isEmpty()){
+            statusSimilar.setText("No Similar movie.");
+        }
+        else {
+            statusSimilar.setText("Similar movie:");
+        }
         for (int i = 0; i < api.getResults().size(); i++){
             resultsList.add(new Results(
                     api.getResults().get(i).getTitle(),
@@ -177,6 +187,12 @@ public class PosterMovieActivity extends AppActivity {
             newFavoriMovie = Integer.toString(api.getId());
         }
         Preference.setMovie(PosterMovieActivity.this, newFavoriMovie);
+        FastDialog.showDialog(
+                PosterMovieActivity.this,
+                FastDialog.SIMPLE_DIALOG,
+                "Add favorites! 😊"
+        );
+        return;
 
     }
 

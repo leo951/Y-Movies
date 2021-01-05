@@ -136,17 +136,18 @@
             tools:text="Description" />
 
         <TextView
+            android:id="@+id/statusSimilar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Similar movies :"
+            tools:text="Similar movies :"
             android:textColor="@color/purple_200"
             android:textSize="17dp" />
 
         <ListView
             android:id="@+id/similarList"
             android:layout_width="match_parent"
-            android:layout_height="4050dp" />
+            android:layout_height="4500dp" />
 
     </LinearLayout>
 </ScrollView>

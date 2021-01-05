@@ -30,6 +30,6 @@ public class MainActivity extends AppActivity {
                 startActivity(myIntent);
                 finish();
             }
-        }, 1000);
+        }, 2000);
     }
 }
